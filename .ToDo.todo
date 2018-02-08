@@ -1,7 +1,7 @@
 - [] Add :PlugInstall command to /vim/install.sh file
 - [] Read tmux tutorial
-- [] Configurate mocp
-- [] Configurate tmux
+- [] Configure mocp
+- [] Configure tmux
 - [] Check out xterm
-- [] Wi-fi terminal setup
+- [] Add wi-fi terminal setup
 - [] Add Libre Office settings
