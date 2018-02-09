@@ -101,7 +101,7 @@ sudo apt install curl
 
 #MySql installation
 echo -en "\033[37;1;41m MySql \033[0m Installation \n"
-sudo apt install mysql
+sudo apt install mysql-server
 
 #MySql-workbench installation
 echo -en "\033[37;1;41m MySql-Workbench \033[0m Installation \n"
