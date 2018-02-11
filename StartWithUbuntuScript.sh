@@ -89,12 +89,20 @@ echo -en "\033[37;1;41m Crypt Setup \033[0m Installation \n"
 apt install cryptsetup
 
 #install workflowy
- echo -en "\033[37;1;41m Workflowy \033[0m Installation \n"
+echo -en "\033[37;1;41m Workflowy \033[0m Installation \n"
 wget https://github.com/workflowy/desktop/releases/download/v0.0.1/WorkFlowy-0.0.1-x86_64.AppImage
 chmod a+x WorkFlowy.AppImage
 ./Workflowy.AppImage
 rm -f -v Workflowy.AppImage
 
 #install curl
- echo -en "\033[37;1;41m Curl \033[0m Installation \n"
+echo -en "\033[37;1;41m Curl \033[0m Installation \n"
 sudo apt install curl
+
+#MySql installation
+echo -en "\033[37;1;41m MySql \033[0m Installation \n"
+sudo apt install mysql-server
+
+#MySql-workbench installation
+echo -en "\033[37;1;41m MySql-Workbench \033[0m Installation \n"
+sudo apt install mysql-workbench
