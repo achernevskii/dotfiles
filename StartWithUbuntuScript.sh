@@ -77,6 +77,9 @@ sudo apt install nmap
 echo -en "\033[37;1;41m Git \033[0m Installation \n"
 sudo apt install git
 
+#install xclip for github ssh key add
+sudo apt install xclip
+
 #install TrueCrypt
 echo -en "\033[37;1;41m True Crypt \033[0m Installation \n"
 git clone https://github.com/AuditProject/truecrypt-verified-mirror.git
