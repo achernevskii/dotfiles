@@ -7,3 +7,7 @@ sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbun
 apt-get -qq update
 apt-get -qq --assume-yes install arc-theme
 rm -f -v /etc/apt/sources.list.d/arc-theme.list
+
+# Config files copy
+
+cp -r -f -v xfce4 ~/.config 
