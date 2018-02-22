@@ -109,3 +109,11 @@ apt-get -qq --assume-yes install mysql-server
 #MySql-workbench installation
 echo -en "\033[37;1;41m MySql-Workbench \033[0m Installation \n"
 apt-get -qq --assume-yes install mysql-workbench
+
+#PyCharm installation
+echo -en "\033[37;1;41m PyCharm \033[0m Installation \n"
+wget -t 0 https://download.jetbrains.com/python/pycharm-community-2017.3.3.tar.gz
+tar -xzvf pycharm-community-2017.3.3.tar.gz --directory /opt/
+
+echo -en "\033[37;1;41m Please, create desktop entry and close the applivation \033[0m\n"
+/opt/pycharm-community-2017.3.3/bin/pycharm.sh
