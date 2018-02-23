@@ -5,10 +5,10 @@
 ###########################
 
 # ZSH installation.
-apt -qq install zsh --assume-yes
+apt-get -qq install zsh --assume-yes
 
 # Needed for Oh-My-ZSH installation
-apt -qq install curl --assume-yes
+apt-get -qq install curl --assume-yes
 # Oh-My-ZSH installation.
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
 exit
