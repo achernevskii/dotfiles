@@ -46,7 +46,7 @@ apt-get -qq --assume-yes install unetbootin
 #install intellij idea
 echo -en "\033[37;1;41m Intellij Idea \033[0m Installation \n"
 add-apt-repository -y ppa:ubuntuhandbook1/apps
-apt-get-get update
+apt-get update
 apt-get -qq --assume-yes install intellij-idea-community
 
 #install octave
