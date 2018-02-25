@@ -30,6 +30,14 @@ set incsearch
 " Type :PlugInstall to install all plugins "
 """"""""""""""""""""""""""""""""""""""""""""
 
+" Automatic installation of Vim-Plug
+
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
+
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -51,7 +59,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " You Complete Me
 " https://github.com/Valloric/YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " Auto pairs
 " https://github.com/jiangmiao/auto-pairs
@@ -61,6 +69,8 @@ Plug 'jiangmiao/auto-pairs'
 " https://github.com/kien/ctrlp.vim
 Plug 'kien/ctrlp.vim'
 
+" vimtex for latex files
+Plug 'lervag/vimtex'
 
 
 """""""""""""""""
@@ -72,7 +82,7 @@ Plug 'kien/ctrlp.vim'
 
 " Gruvbox
 " https://github.com/morhetz/gruvbox
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 
 """""""""""""""""
 """""""""""""""""
@@ -108,8 +118,8 @@ call plug#end()
 """"""""""""""""""""""""
 " Current color scheme "
 """"""""""""""""""""""""
-colorscheme gruvbox
-set background=dark    
+" colorscheme gruvbox
+" set background=dark    
 """"""""""""""""""""""""
 
 " mappings
