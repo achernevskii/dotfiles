@@ -59,7 +59,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " You Complete Me
 " https://github.com/Valloric/YouCompleteMe
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'for': ['cpp', 'h', 'java'] }
 
 " Auto pairs
 " https://github.com/jiangmiao/auto-pairs
@@ -70,7 +70,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'kien/ctrlp.vim'
 
 " vimtex for latex files
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex'  }
 
 
 """""""""""""""""
@@ -82,7 +82,7 @@ Plug 'lervag/vimtex'
 
 " Gruvbox
 " https://github.com/morhetz/gruvbox
-" Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
 
 """""""""""""""""
 """""""""""""""""
@@ -118,8 +118,8 @@ call plug#end()
 """"""""""""""""""""""""
 " Current color scheme "
 """"""""""""""""""""""""
-" colorscheme gruvbox
-" set background=dark    
+"colorscheme gruvbox
+"set background=dark    
 """"""""""""""""""""""""
 
 " mappings
