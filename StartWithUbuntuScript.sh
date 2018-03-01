@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -f -v /etc/apt/sources.list.d/*
+
 apt-get -qq --assume-yes update
 apt-get -qq --assume-yes upgrade
 apt-get install -qq --assume-yes ubuntu-restricted-extras
@@ -39,6 +41,7 @@ wget -t 0 https://download.jetbrains.com/python/pycharm-community-2017.3.3.tar.g
 tar -xzvf pycharm-community-2017.3.3.tar.gz --directory /opt/
 echo -en "\033[37;1;41m Please, create desktop entry and close the applivation \033[0m\n"
 /opt/pycharm-community-2017.3.3/bin/pycharm.sh
+rm -f -v pycharm-community-2017.3.3.tar.gz
 
 # install TrueCrypt
 echo -en "\033[37;1;41m True Crypt \033[0m Installation \n"
@@ -46,6 +49,7 @@ git clone https://github.com/AuditProject/truecrypt-verified-mirror.git
 cd truecrypt-verified-mirror/Linux
 tar -xzvf truecrypt-7.1a-linux-console-x64.tar.gz
 ./truecrypt-7.1a-setup-console-x64
+rm -f -v -r truecrypt-verified-mirror
 
 #################################
 #  Automatic installation begin #
