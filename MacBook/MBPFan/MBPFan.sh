@@ -2,9 +2,8 @@
 
 echo "Note down the lowest among the numbers for fan_min."
 echo "Note down the highest among the numbers for fan_max."
-cd /sys/devices/platform/applesmc.768/
-cat fan*_min
-cat fan*_max
+cat /sys/devices/platform/applesmc.768/fan*_min
+cat /sys/devices/platform/applesmc.768/fan*_max
 
 echo "Note down the highest among the numbers you might obtain."
 echo "Divide the number by 1000."
@@ -13,9 +12,11 @@ echo "For example, I got 105000. Therefore, my max_temp is 105."
 cat /sys/devices/platform/coretemp.*/hwmon/hwmon*/temp*_max
 
 #https://github.com/dgraziotin/mbpfan/tags
-cd ~/Downloads/
-tar xfvz mbpfan-1.9.1.tar.gz
-cd mbpfan-1.9.1
+wget -t 0 https://github.com/dgraziotin/mbpfan/archive/v2.0.2.tar.gz
+tar xfvz v2.0.2.tar.gz
+rm -v -f v2.0.2.tar.gz
+
+cd mbpfan-2.0.2
 
 #Install the build-essential package, which contains what is required for compiling basic source code like the one of mbpfan.
 sudo apt-get update && sudo apt-get install build-essential
@@ -25,7 +26,12 @@ make
 sudo make install
 sudo make tests
 
-sudo gedit /etc/mbpfan.conf
+# Remove mbpfan insrtallation folder
+cd ../
+rm -f -v -r mbpfan-2.0.2
+
+# Copy MBPFan dotfile ti it's destination folder
+cp -f -v mbpfan.conf /etc/
 
 #The content of the file will be the following:
 
@@ -36,5 +42,5 @@ sudo gedit /etc/mbpfan.conf
 #max_temp = 86            # do not set it > 90, default is 86
 #polling_interval = 7    # default is 7
 
-sudo cp mbpfan.service /etc/systemd/system/
-sudo systemctl enable mbpfan.service
+#sudo cp mbpfan.service /etc/systemd/system/
+#sudo systemctl enable mbpfan.service
