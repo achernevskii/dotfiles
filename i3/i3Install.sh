@@ -22,7 +22,7 @@ mkdir tmp
 #rxvt/installRXVT.sh
 apt -qq --assume-yes install rxvt-unicode
 
-cp -f -v rxvt/.Xresources ~/
+cp -f -v ../rxvt/.Xresources ~/
 
 git clone https://github.com/lexachsar/Dotfiles tmp/Dotfiles
 
