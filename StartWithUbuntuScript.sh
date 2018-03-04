@@ -1,6 +1,7 @@
 #!/bin/bash
 
-rm -f -v /etc/apt/sources.list.d/*
+# Need to fix YADisk sources problem
+#rm -f -v /etc/apt/sources.list.d/*
 
 apt-get -qq --assume-yes update
 apt-get -qq --assume-yes upgrade
