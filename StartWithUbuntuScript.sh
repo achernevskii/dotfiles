@@ -1,7 +1,10 @@
-#!/bin/bash
+#/bin/bash
 
-# Need to fix YADisk sources problem
-#rm -f -v /etc/apt/sources.list.d/*
+#Remove sources list
+rm -f -v /etc/apt/sources.list.d/yande
+
+rm -f -v /etc/apt/sources.list.d/yandex-disk.list
+
 
 apt-get -qq --assume-yes update
 apt-get -qq --assume-yes upgrade
@@ -14,8 +17,7 @@ apt-get install -qq --assume-yes ubuntu-restricted-extras
 
 # Yandex Disk installation
 cloudFolderPath=~/Cloud
-mkdir $cloudFolderPath
-chown -R $USERNAME $cloudFolderPath
+sudo -u $USERNAME mkdir $cloudFolderPath
 echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex.list > /dev/null
 wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
 apt-get update
@@ -33,7 +35,7 @@ chmod ugo+x /etc/init.d/YADisk.autostart
 # Configure the init system to run this script at startup.
 update-rc.d YADisk.autostart defaults
 
-yandex-disk start -d=$cloudFolderPath
+sudo -u $USERNAME yandex-disk start -d=$cloudFolderPath
 
 
 # PyCharm installation
