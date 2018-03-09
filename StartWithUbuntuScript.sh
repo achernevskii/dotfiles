@@ -1,9 +1,7 @@
 #/bin/bash
 
 #Remove sources list
-rm -f -v /etc/apt/sources.list.d/yande
-
-rm -f -v /etc/apt/sources.list.d/yandex-disk.list
+rm -f -v /etc/apt/sources.list.d/yandex*
 
 
 apt-get -qq --assume-yes update
