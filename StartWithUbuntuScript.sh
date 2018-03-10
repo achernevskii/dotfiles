@@ -52,6 +52,13 @@ tar -xzvf truecrypt-7.1a-linux-console-x64.tar.gz
 ./truecrypt-7.1a-setup-console-x64
 rm -f -v -r truecrypt-verified-mirror
 
+# install workflowy
+echo -en "\033[37;1;41m Workflowy \033[0m Installation \n"
+wget -t 0 "https://github.com/workflowy/desktop/releases/download/v0.0.5/WorkFlowy-0.0.5-x86_64.AppImage"
+chmod a+x WorkFlowy.AppImage
+./Workflowy.AppImage
+rm -f -v Workflowy.AppImage
+
 #################################
 #  Automatic installation begin #
 #################################
@@ -135,13 +142,6 @@ apt-get -qq --assume-yes install xclip
 # install CryptSetup
 echo -en "\033[37;1;41m Crypt Setup \033[0m Installation \n"
 apt-get -qq --assume-yes install cryptsetup
-
-# install workflowy
-echo -en "\033[37;1;41m Workflowy \033[0m Installation \n"
-wget https://github.com/workflowy/desktop/releases/download/v0.0.1/WorkFlowy-0.0.1-x86_64.AppImage
-chmod a+x WorkFlowy.AppImage
-./Workflowy.AppImage
-rm -f -v Workflowy.AppImage
 
 # install curl
 echo -en "\033[37;1;41m Curl \033[0m Installation \n"
