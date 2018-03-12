@@ -57,7 +57,7 @@ echo -en "\033[37;1;41m Workflowy \033[0m Installation \n"
 wget -t 0 "https://github.com/workflowy/desktop/releases/download/v0.0.5/WorkFlowy-0.0.5-x86_64.AppImage"
 chmod a+x WorkFlowy.AppImage
 ./Workflowy.AppImage
-rm -f -v Workflowy.AppImage
+#rm -f -v Workflowy.AppImage
 
 #################################
 #  Automatic installation begin #
