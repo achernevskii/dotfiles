@@ -10,4 +10,4 @@ apt-get -qq --assume-yes install tmux
 # Add zsh installation #
 ########################
 
-cp -f -v .tmux.conf ~/
+cp -f -v config/.tmux.conf ~/

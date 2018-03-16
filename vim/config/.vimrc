@@ -14,7 +14,7 @@
 " UI Layout {{{
 
 " Set line numbers
-set number
+" set number
 
 " Show current vim command in bottom bar
 set showcmd
@@ -28,7 +28,7 @@ set wildmenu
 " Redraw only when we need to.
 set lazyredraw
 
-" highlight matching [{()}]
+" Highlight matching [{()}]
 set showmatch
 
 " }}}
@@ -48,7 +48,7 @@ set incsearch
 
 " Tmux {{{
 
-" allows cursor change in tmux mode
+" Allows cursor change in tmux mode
 if exists('$TMUX')
 	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -60,8 +60,8 @@ endif
 " }}}
 
 " Backups {{{
-" Moves .swp files into /tmp directory, so they doesn't annoy.
 
+" Moves .swp files into /tmp directory, so they doesn't annoy.
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backupskip=/tmp/*,/private/tmp/*
