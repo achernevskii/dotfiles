@@ -51,7 +51,7 @@ Includes config file [.vimrc](/vim/config/.vimrc)
 ## Changes in [.vimrc](/vim/config/.vimrc)
 
 1. UI Layout
-- Vim shows current vim command in bottom bar
+- Vim shows current command in bottom bar
 - Vim highlight current line
 - Graphical menu of all the matches you can cycle through.
 - Highlight matching [{()}]
