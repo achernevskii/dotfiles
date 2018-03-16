@@ -7,5 +7,6 @@
 - [] Add Libre Office settings
 - [] Add comments for polybar dependencies
 - [] "devilspie" app can attach apps to their workspaces in XFCE
-- [] add some tmp files deletion
+- [x] add some tmp files deletion
 - [] add zsh installation in tmux installation script
+- [] https://askubuntu.com/questions/272314/setup-and-install-intellij-with-jdk
