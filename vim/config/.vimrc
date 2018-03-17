@@ -1,3 +1,14 @@
+" vim configuration file
+" destination folder /@user@/home/
+
+"""""""""""""""""""""""""""""""""
+" Type:				"
+" :sorce ~/.vimrc	        "
+" to reload config file		"
+"""""""""""""""""""""""""""""""""
+
+
+
 " Sources {{{
 
 " How To Vimrc
@@ -102,13 +113,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex', { 'for': 'tex'  }
 
 " Gundo
-"Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo'
 
 " Undo Tree
 Plug 'mbbill/undotree'
 
 " Syntastic - for errors highlight
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " Vim-Airline (Lean & mean status/tabline for vim that's light as air)
 Plug 'vim-airline/vim-airline'

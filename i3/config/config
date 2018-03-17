@@ -1,8 +1,15 @@
 # i3 config file (v4)
-#
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# destination folder /@user@/home/.config/
 
-#setting variables
+###################################
+# Type:                           #
+# mod + Shift + r                 #
+# To reload the cofiguration file #
+###################################
+
+# Variables {{{
+
 #Default terminal
 set $terminal "rxvt -e tmux"
 #U can rename workspaces here
@@ -17,9 +24,11 @@ set $workspace8 "8"
 set $workspace9 "9: Tor"
 set $workspace10 "10: Media"
 
-#####
-
 set $mod Mod4
+
+# }}}
+
+# Default Font {{{
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -36,6 +45,10 @@ font pango:System San Francisco Display 10
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# }}}
+
+# Keyboard + Mouse Shortcuts {{{
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -45,7 +58,8 @@ bindsym $mod+Return exec $terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# change focus
+# Change Focus {{{
+
 #bindsym $mod+j focus left
 #bindsym $mod+k focus down
 #bindsym $mod+l focus up
@@ -57,7 +71,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# }}}
+
+# Move Focused Window {{{
+
 #bindsym $mod+Shift+j move left
 #bindsym $mod+Shift+k move down
 #bindsym $mod+Shift+l move up
@@ -68,6 +85,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# }}}
+
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -95,6 +115,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Workspaces {{{
+
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
@@ -119,30 +141,7 @@ bindsym $mod+Shift+8 move container to workspace $worksapce8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
-#Type xprop in the terminal to get app class
-assign [class="jetbrains-idea-ce"] $workspace2
-
-assign [class="libreoffice"] $workspace3
-assign [class="libreoffice-writer"] $workspace3
-assign [class="Soffice"] $workspace3
-assign [class="Evince"] $workspace3
-assign [class="libprs500"] $workspace3
-assign [class="Ristretto"] $workspace3
-assign [class="ristretto"] $workspace3
-
-assign [class="Firefox"] $workspace4
-assign [class="Chromium-browser"] $workspace4
-
-assign [class="telegram"] $workspace5
-assign [class="TelegramDesktop"] $workspace5
-assign [class="discord"] $workspace5
-
-assign [class="Transmission-gtk"] $workspace6
-
-assign [class="Tor Browser"] $workspace9
-
-assign [class="Parole"] $workspace10
-assign [class="vlc"] $workspace10
+# }}}
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -150,34 +149,6 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-
 
 # screenshot
 #bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
@@ -208,7 +179,74 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-#autostart applications
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+
+# }}}
+
+# Workspaces Assign {{{
+
+#Type xprop in the terminal to get app class
+assign [class="jetbrains-idea-ce"] $workspace2
+
+assign [class="libreoffice"] $workspace3
+assign [class="libreoffice-writer"] $workspace3
+assign [class="Soffice"] $workspace3
+assign [class="Evince"] $workspace3
+assign [class="libprs500"] $workspace3
+assign [class="Ristretto"] $workspace3
+assign [class="ristretto"] $workspace3
+
+assign [class="Firefox"] $workspace4
+assign [class="Chromium-browser"] $workspace4
+
+assign [class="telegram"] $workspace5
+assign [class="TelegramDesktop"] $workspace5
+assign [class="discord"] $workspace5
+
+assign [class="Transmission-gtk"] $workspace6
+
+assign [class="Tor Browser"] $workspace9
+
+assign [class="Parole"] $workspace10
+assign [class="vlc"] $workspace10
+
+# }}}
+
+# Window Resize Mode {{{
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# }}}
+
+# Autostart Applications {{{
 exec --no-startup-id pulseaudio
 
 exec firefox
@@ -216,8 +254,4 @@ exec $terminal
 exec megasync
 exec volumeicon
 
-# The middle button over a titlebar kills the window
-bindsym --release button2 kill
-
-# The right button toggles floating
-bindsym button3 floating toggle
+# }}}
