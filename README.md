@@ -71,6 +71,7 @@ Includes config file [.vimrc](/vim/config/.vimrc)
 - [Vimtex](https://github.com/lervag/vimtex) for latex files
 - [Undo Tree](https://github.com/mbbill/undotree)
 - [Syntastic](https://github.com/scrooloose/syntastic) for errors highlight
+- [Vim-Airline.](https://github.com/vim-airline/vim-airline) Lean & mean status/tabline for vim that's light as air
 
 6. Key mappings
 - Ctrl+e -- Nerd Tree toggle

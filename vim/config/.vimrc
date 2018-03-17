@@ -110,6 +110,10 @@ Plug 'mbbill/undotree'
 " Syntastic - for errors highlight
 Plug 'scrooloose/syntastic'
 
+" Vim-Airline (Lean & mean status/tabline for vim that's light as air)
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " }}}
 
 " Color schemes {{{
@@ -125,14 +129,6 @@ Plug 'scrooloose/syntastic'
 " }}}
 
 " Testing Plugins {{{
-
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -167,6 +163,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" }}}
+
+" Airline {{{
+
+set laststatus=2
+let g:airline_theme = 'zenburn'
+let g:airline_left_sep = ''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_sep = ''
 
 " }}}
 
