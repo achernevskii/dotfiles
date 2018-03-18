@@ -47,6 +47,7 @@ Includes config file [.vimrc](/vim/config/.vimrc)
 1. [How To Vimrc](https://dougblack.io/words/a-good-vimrc.html)
 2. [Vim 02 -- Конфигурация и плагины](https://www.youtube.com/watch?v=VPENostK_3w)
 3. [Vim 03 -- Vim 03 - Плагины. Самое необходимое](https://www.youtube.com/watch?v=pIcLJc85RDc)
+4. [The Ultimate Vimrc](https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim)
 
 ## Changes in [.vimrc](/vim/config/.vimrc)
 
@@ -56,9 +57,11 @@ Includes config file [.vimrc](/vim/config/.vimrc)
 - Graphical menu of all the matches you can cycle through.
 - Highlight matching [{()}]
 2. Searching
+- Vim history is set to 500 lines
 - Ignore case when searching
 - Highlight search results
 - Highlight choosen search result
+- For regular expressions turned magic on
 3. Tmux
 - Allows cursor change in tmux mode
 4. Backups
@@ -76,3 +79,6 @@ Includes config file [.vimrc](/vim/config/.vimrc)
 6. Key mappings
 - Ctrl+e -- Nerd Tree toggle
 - Ctrl+u -- Undo Tree toggle
+
+7. Extra
+- Set to auto read when a file is changed from the outside

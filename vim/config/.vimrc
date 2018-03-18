@@ -1,13 +1,14 @@
 " vim configuration file
 " destination folder /@user@/home/
 
-"""""""""""""""""""""""""""""""""
-" Type:				"
-" :sorce ~/.vimrc	        "
-" to reload config file		"
-"""""""""""""""""""""""""""""""""
-
-
+""""""""""""""""""""""""""""""""""""
+" Type:				   "
+" :sorce ~/.vimrc	           "
+" to reload config file		   "
+""""""""""""""""""""""""""""""""""""
+" :vert help <line in config file> "
+" to see help page                 "
+""""""""""""""""""""""""""""""""""""
 
 " Sources {{{
 
@@ -19,6 +20,9 @@
 
 " Vim 03 -- Vim 03 - Плагины. Самое необходимое
 " https://www.youtube.com/watch?v=pIcLJc85RDc
+
+" The Ultimate Vimrc
+" https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 
 " }}}
 
@@ -42,11 +46,18 @@ set lazyredraw
 " Highlight matching [{()}]
 set showmatch
 
+" Enable syntax highlighting
+syntax enable
+
+
 " }}}
 
 " Searching {{{
 
-" Ignore case when searching
+" Sets how many lines of history VIM has to remember
+set history=500
+
+" Ignore case while searching
 set ignorecase
 
 " Highlight search results
@@ -54,6 +65,9 @@ set hlsearch
 
 " Highlight choosen search result
 set incsearch
+
+" For regular expressions turn magic on
+set magic
 
 " }}}
 
@@ -191,9 +205,12 @@ let g:airline_right_sep = ''
 " }}}
 
 " Colors {{{
-	
-" colorscheme badwolf
-" set background=dark    
+"try
+"	colorscheme badwolf
+"catch
+"endtry
+
+"set background=dark    
 
 " }}}
 
@@ -204,7 +221,7 @@ map <C-e> :NERDTreeToggle<CR>
 
 map <C-u> :UndotreeToggle<CR>
 
-" map <C-s> :w
+"map <C-w> :w!<cr>
 
 " }}}
 
@@ -223,6 +240,9 @@ set modelines=1
 
 " }}}
 
+" Extra {{{
 
-" Needed for organisation setting
-" vim:foldmethod=marker:foldlevel=0
+" Set to auto read when a file is changed from the outside
+set autoread
+
+" }}}
