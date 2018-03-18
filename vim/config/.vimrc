@@ -28,12 +28,6 @@
 
 " UI Layout {{{
 
-" Default terminal
-"set term=screen-256color
-
-" Set line numbers
-" set number
-
 " Show current vim command in bottom bar
 set showcmd
 
@@ -122,9 +116,6 @@ Plug 'Valloric/YouCompleteMe', { 'for': ['cpp', 'h', 'java'] }
 " Auto pairs
 Plug 'jiangmiao/auto-pairs'
 
-" Ctrlp -- for file search
-"Plug 'kien/ctrlp.vim'
-
 " Vimtex for latex files
 Plug 'lervag/vimtex', { 'for': 'tex'  }
 
@@ -163,6 +154,9 @@ Plug 'dracula/vim'
 " }}}
 
 " Testing Plugins {{{
+
+" Ctrlp -- for file search
+"Plug 'kien/ctrlp.vim'
 
 " Multiple Plug commands can be written in a single line using | separators
 " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
