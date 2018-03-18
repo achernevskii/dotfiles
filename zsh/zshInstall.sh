@@ -7,15 +7,6 @@
 # ZSH installation.
 apt-get -qq install zsh --assume-yes
 
-# Needed for Oh-My-ZSH installation
-apt-get -qq install curl --assume-yes
-# Oh-My-ZSH installation.
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
-exit
-
-###########################
-###########################
-
 # Making ZSH default shell 
 read -r -p "Do you want to make ZSH your default shell? [y/N] " response
 case "$response" in
@@ -29,4 +20,22 @@ case "$response" in
         ;;
 esac
 
+# Needed for Oh-My-ZSH installation
+apt-get -qq install curl --assume-yes
+# Oh-My-ZSH installation.
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+
+# git installation (for dracula colorscheme)
+apt-get -qq install git --assume-yes
+
+# Dracula theme
+git clone https://github.com/dracula/zsh.git
+# Copy dracula theme for oh-my-zsh
+ln -s zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
+
+rm -fvr zsh
+###########################
+###########################
+
+cp -fv config/.zshrc ~/
 
