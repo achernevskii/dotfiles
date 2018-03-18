@@ -28,6 +28,9 @@
 
 " UI Layout {{{
 
+" Default terminal
+"set term=screen-256color
+
 " Set line numbers
 " set number
 
@@ -48,7 +51,6 @@ set showmatch
 
 " Enable syntax highlighting
 syntax enable
-
 
 " }}}
 
@@ -139,6 +141,9 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Simple tmux statusline generator with support for powerline symbols and vim/airline/lightline statusline integration
+Plug 'edkolev/tmuxline.vim'
+
 " }}}
 
 " Color schemes {{{
@@ -149,7 +154,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Badwolf
 " https://github.com/sjl/badwolf/
-" Plug 'sjl/badwolf'
+"Plug 'sjl/badwolf'
+
+" Dracula
+" https://github.com/dracula/vim
+Plug 'dracula/vim'
 
 " }}}
 
@@ -194,7 +203,10 @@ let g:syntastic_check_on_wq = 0
 " Airline {{{
 
 set laststatus=2
-let g:airline_theme = 'zenburn'
+" Old theme
+"let g:airline_theme = 'zenburn'
+let g:airline_theme = 'dracula'
+
 let g:airline_left_sep = ''
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -205,12 +217,12 @@ let g:airline_right_sep = ''
 " }}}
 
 " Colors {{{
-"try
-"	colorscheme badwolf
-"catch
-"endtry
+try
+	colorscheme dracula
+catch
+endtry
 
-"set background=dark    
+set background=dark    
 
 " }}}
 
