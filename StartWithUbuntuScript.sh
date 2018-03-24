@@ -158,3 +158,15 @@ apt-get -qq --assume-yes install mysql-workbench
 # Synergy installation
 echo -en "\033[37;1;41m Synergy \033[0m Installation \n"
 apt-get -qq --assume-yes install synergy
+
+# htop installation
+echo -en "\033[37;1;41m htop \033[0m Installation \n"
+apt-get -qq --assume-yes install htop
+
+# ranger installation
+echo -en "\033[37;1;41m ranger \033[0m Installation \n"
+apt-get -qq --assume-yes install ranger
+
+# cmus installation
+echo -en "\033[37;1;41m cmus \033[0m Installation \n"
+apt-get -qq --assume-yes install cmus
