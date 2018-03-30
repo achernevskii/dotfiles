@@ -132,6 +132,12 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Simple tmux statusline generator with support for powerline symbols and vim/airline/lightline statusline integration
+"Plug 'edkolev/tmuxline.vim'
+
+" Vim syntax highlighting for i3 config
+Plug 'mboughaba/i3config.vim'  { 'for': '.i3.config'}
+
 " }}}
 
 " Color schemes {{{
