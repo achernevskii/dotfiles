@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation.
   export ZSH=/home/lexach/.oh-my-zsh
 
+# Theme {{{
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -16,6 +18,10 @@ ZSH_THEME="dracula"
 # An empty array have no effect
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
+# }}}
+
+# # Auto completion {{{
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -23,11 +29,17 @@ ZSH_THEME="dracula"
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
+# }}}
+
+# # Updates {{{
+
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# }}}
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -60,6 +72,9 @@ ZSH_THEME="dracula"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  battery
+  colored-man-pages
+  thefuck
 )
 
 source $ZSH/oh-my-zsh.sh

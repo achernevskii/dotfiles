@@ -136,7 +136,7 @@ Plug 'vim-airline/vim-airline-themes'
 "Plug 'edkolev/tmuxline.vim'
 
 " Vim syntax highlighting for i3 config
-Plug 'mboughaba/i3config.vim'  { 'for': '.i3.config'}
+Plug 'mboughaba/i3config.vim',  { 'for': '.i3.config'}
 
 " }}}
 
