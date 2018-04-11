@@ -39,7 +39,7 @@ Includes config file [.tmux.conf](tmux/config/.tmux.conf)
 6. Enabled mouse mode;
 7. Enabled mouse scroll
 
-# vim
+# [vim](https://www.vim.org/)
 
 Includes config file [.vimrc](/vim/config/.vimrc)
 
@@ -82,3 +82,8 @@ Includes config file [.vimrc](/vim/config/.vimrc)
 
 7. Extra
 - Set to auto read when a file is changed from the outside
+
+# [TLP](https://wiki.archlinux.org/index.php/TLP)
+
+## Sources
+1. [TLP - Configuration](http://linrunner.de/en/tlp/docs/tlp-configuration.html)
