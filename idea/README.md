@@ -1,10 +1,6 @@
-# Sources {{{
+# Sources
 
-# 50 советов, хитростей и ссылок для Android Studio и Intellij IDEA
-# https://proglib.io/p/android-studio-tricks/
-
-
-# }}}
+[50 советов, хитростей и ссылок для Android Studio и Intellij IDEA](https://proglib.io/p/android-studio-tricks/)
 
 # Changes
 
