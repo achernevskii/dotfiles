@@ -24,6 +24,9 @@
 " The Ultimate Vimrc
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 
+" Word wrap without line breaks
+" http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
+
 " }}}
 
 " UI Layout {{{
@@ -45,6 +48,9 @@ set showmatch
 
 " Enable syntax highlighting
 syntax enable
+
+" Tells Vim to only wrap at a character in the breakat option (by default, this includes " ^I!@*-+;:,./?")
+set linebreak
 
 " }}}
 
