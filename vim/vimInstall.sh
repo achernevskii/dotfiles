@@ -4,7 +4,7 @@
 # Installing dependencies #
 ###########################
 
-apt-get install vim
+sudo apt-get install vim
 
 # curl installation
 sudo apt install curl --assume-yes
@@ -33,4 +33,4 @@ vim +source ~/.vimrc +qall
 vim +PlugInstall +qall
 
 #YouCompleteMe clang installation
- ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
+sudo  ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
