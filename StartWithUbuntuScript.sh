@@ -170,3 +170,7 @@ apt-get -qq --assume-yes install ranger
 # cmus installation
 echo -en "\033[37;1;41m cmus \033[0m Installation \n"
 apt-get -qq --assume-yes install cmus
+
+# youtube-dl installation
+sudo wget https://yt-dl.org/latest/youtube-dl -O /usr/local/bin/youtube-dl
+sudo chmod a+x /usr/local/bin/youtube-dl
