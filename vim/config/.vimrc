@@ -132,7 +132,7 @@ Plug 'simnalamburt/vim-mundo'
 Plug 'mbbill/undotree'
 
 " Syntastic - for errors highlight
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 " Vim-Airline (Lean & mean status/tabline for vim that's light as air)
 Plug 'vim-airline/vim-airline'
