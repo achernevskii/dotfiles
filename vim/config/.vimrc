@@ -31,6 +31,8 @@
 
 " UI Layout {{{
 
+" Generic {{{
+
 " Show current vim command in bottom bar
 set showcmd
 
@@ -51,6 +53,30 @@ syntax enable
 
 " Tells Vim to only wrap at a character in the breakat option (by default, this includes " ^I!@*-+;:,./?")
 set linebreak
+
+set ls=2 " Always show statusbar
+
+" }}}
+
+" GUI {{{
+
+if has("gui_running")
+	" Maximize GUI window
+	set lines=999 columns=999
+
+	" прячем панельки
+	" "set guioptions-=m   " меню
+	" set guioptions-=T    " тулбар
+	" "set guioptions-=r   "  скроллбары
+endif
+
+" }}}
+
+" Mac {{{
+
+set guifont=Consolas:h13
+
+" }}}
 
 " }}}
 
@@ -113,8 +139,26 @@ call plug#begin('~/.vim/plugged')
 
 " Installed Plugins {{{
 
+" Project Navigation {{{
+
 " Nerd tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Class/module browser
+Plugin 'majutsushi/tagbar' 
+
+" }}}
+
+" Snippets support {{{
+
+Plugin 'garbas/vim-snipmate'		" Snippets manager
+Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
+Plugin 'tomtom/tlib_vim'		" dependencies #2
+Plugin 'honza/vim-snippets'		" snippets repo
+
+" }}}
+
+" Langage support {{{
 
 " You Complete Me
 Plug 'Valloric/YouCompleteMe', { 'for': ['cpp', 'h', 'java'] }
@@ -259,5 +303,7 @@ set modelines=1
 
 " Set to auto read when a file is changed from the outside
 set autoread
+
+set enc=utf-8 " utf-8 as default file encoding
 
 " }}}

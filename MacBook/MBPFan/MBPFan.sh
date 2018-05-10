@@ -31,7 +31,7 @@ cd ../
 rm -f -v -r mbpfan-2.0.2
 
 # Copy MBPFan dotfile ti it's destination folder
-cp -f -v mbpfan.conf /etc/
+cp -f -v config/mbpfan.conf /etc/
 
 #The content of the file will be the following:
 
