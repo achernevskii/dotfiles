@@ -145,16 +145,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Class/module browser
-Plugin 'majutsushi/tagbar' 
+Plug 'majutsushi/tagbar' 
 
 " }}}
 
 " Snippets support {{{
 
-Plugin 'garbas/vim-snipmate'		" Snippets manager
-Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
-Plugin 'tomtom/tlib_vim'		" dependencies #2
-Plugin 'honza/vim-snippets'		" snippets repo
+Plug 'garbas/vim-snipmate'		" Snippets manager
+Plug 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
+Plug 'tomtom/tlib_vim'		" dependencies #2
+Plug 'honza/vim-snippets'		" snippets repo
 
 " }}}
 
@@ -206,6 +206,8 @@ Plug 'dracula/vim'
 
 " }}}
 
+" }}}
+
 " Testing Plugins {{{
 
 " Ctrlp -- for file search
@@ -251,8 +253,8 @@ let g:syntastic_check_on_wq = 0
 
 set laststatus=2
 " Old theme
-"let g:airline_theme = 'zenburn'
-let g:airline_theme = 'dracula'
+let g:airline_theme = 'zenburn'
+"let g:airline_theme = 'dracula'
 
 let g:airline_left_sep = ''
 let g:airline_left_sep = ''
