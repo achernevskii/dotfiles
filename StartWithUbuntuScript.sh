@@ -14,26 +14,26 @@ apt-get install -qq --assume-yes ubuntu-restricted-extras
 #################################
 
 # Yandex Disk installation
-cloudFolderPath=~/Cloud
-sudo -u $USERNAME mkdir $cloudFolderPath
-echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex.list > /dev/null
-wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
-apt-get update
-sudo apt-get install -y yandex-disk
+#cloudFolderPath=~/Cloud
+#sudo -u $USERNAME mkdir $cloudFolderPath
+#echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex.list > /dev/null
+#wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - 
+#apt-get update
+#sudo apt-get install -y yandex-disk
 
-yandex-disk token lexachsar
+#yandex-disk token lexachsar
 
 # Create autosteart script for Yandex Disk in /etc/init.d/
-rm -f -v /etc/init.d/YADisk.autostart
-touch /etc/init.d/YADisk.autostart
-echo "#!/bin/sh" >> /etc/init.d/YADisk.autostart
-echo "yandex-disk start -d=$cloudFolderPath" >> /etc/init.d/YADisk.autostart
+#rm -f -v /etc/init.d/YADisk.autostart
+#touch /etc/init.d/YADisk.autostart
+#echo "#!/bin/sh" >> /etc/init.d/YADisk.autostart
+#echo "yandex-disk start -d=$cloudFolderPath" >> /etc/init.d/YADisk.autostart
 # Make it executable.
-chmod ugo+x /etc/init.d/YADisk.autostart
+#chmod ugo+x /etc/init.d/YADisk.autostart
 # Configure the init system to run this script at startup.
-update-rc.d YADisk.autostart defaults
+#update-rc.d YADisk.autostart defaults
 
-sudo -u $USERNAME yandex-disk start -d=$cloudFolderPath
+#sudo -u $USERNAME yandex-disk start -d=$cloudFolderPath
 
 
 # PyCharm installation
@@ -58,6 +58,10 @@ wget -t 0 "https://github.com/workflowy/desktop/releases/download/v0.0.5/WorkFlo
 chmod a+x WorkFlowy.AppImage
 ./Workflowy.AppImage
 #rm -f -v Workflowy.AppImage
+
+# MySql installation
+echo -en "\033[37;1;41m MySql \033[0m Installation \n"
+apt-get -qq --assume-yes install mysql-server
 
 #################################
 #  Automatic installation begin #
@@ -146,10 +150,6 @@ apt-get -qq --assume-yes install cryptsetup
 # install curl
 echo -en "\033[37;1;41m Curl \033[0m Installation \n"
 apt-get -qq --assume-yes install curl
-
-# MySql installation
-echo -en "\033[37;1;41m MySql \033[0m Installation \n"
-apt-get -qq --assume-yes install mysql-server
 
 # MySql-workbench installation
 echo -en "\033[37;1;41m MySql-Workbench \033[0m Installation \n"
