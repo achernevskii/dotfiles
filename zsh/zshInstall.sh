@@ -32,7 +32,7 @@ sudo apt-get -qq install git --assume-yes
 # Dracula theme
 git clone https://github.com/dracula/zsh.git
 # Copy dracula theme for oh-my-zsh
-ln -s zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
+cp -fv zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
 
 rm -fvr zsh
 ###########################
