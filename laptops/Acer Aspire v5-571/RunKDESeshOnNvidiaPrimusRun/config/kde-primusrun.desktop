@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Exec=/usr/local/bin/primus-kde
+TryExec=/usr/local/bin/primus-kde
+
+Name=KDE HDMI Enabled
+
+Comment=KDE Desktop Environment
