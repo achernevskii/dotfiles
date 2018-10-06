@@ -22,7 +22,6 @@ esac
 
 # Needed for Oh-My-ZSH installation
 sudo apt-get -qq install curl --assume-yes
-sudo apt-get -qq install thefuck --assume-yes
 # Oh-My-ZSH installation.
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
 
