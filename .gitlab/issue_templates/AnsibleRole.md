@@ -8,3 +8,6 @@ Info about `ansible` modules for package installation:
 
 Info about `ansible` roles:
 1. Official [documentation page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html)
+
+Info about `ansible` variables:
+1. Official [documentation page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html)
