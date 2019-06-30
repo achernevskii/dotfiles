@@ -1,0 +1,19 @@
+---
+- include_tasks: install-redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: install-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include_tasks: install-arch.yml
+  when: ansible_os_family == 'Archlinux'
+
+- name: "Set global git name: {{ user_name }}"
+  shell: "git config --global user.name \"{{ user_name }}\""
+  become: true
+  become_user: "{{user_login}}"
+
+- name: "Set global git email: {{ user_email }}"
+  shell: "git config --global user.email \"{{ user_email }}\""
+  become: true
+  become_user: "{{user_login}}"
