@@ -1,5 +1,0 @@
----
-- name: Install Midnight Commander
-  yum:
-    name: mc
-    state: present

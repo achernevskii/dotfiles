@@ -1,5 +1,0 @@
----
-- name: Install htop
-  yum:
-    name: htop
-    state: present

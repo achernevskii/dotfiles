@@ -1,5 +1,0 @@
----
-- name: Install zsh
-  yum:
-    name: zsh
-    state: present
