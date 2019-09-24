@@ -1,0 +1,4 @@
+---
+dependencies:
+  - create_user
+  - zsh

@@ -1,0 +1,5 @@
+---
+- name: Install both openssh server and client
+  apt:
+    name: ssh
+    state: present
