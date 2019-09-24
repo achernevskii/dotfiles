@@ -14,13 +14,14 @@
 
 - name: "Create user {{ user.login }}"
   user:
+    name: "{{ user.login }}"
+
     create_home: true
 
     generate_ssh_key: true
     # Add a comment to the end of ssh key
     ssh_key_comment: "{{ user.email }}"
 
-    name: "{{ user.login }}"
     password: ""
     # Add user to sudoers
     group: wheel
