@@ -1,5 +1,0 @@
----
-- name: Install Midnight Commander
-  pacman:
-    name: mc
-    state: present
