@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  vars:
+    user:
+      login: "lexach"
+      email: "lexachsar@gmail.com"
+      name: "Alex Chernevskiy"
+  become: true
+  roles:
+    #- update
+    #- openssh
+    #- create_user
+    - git
+    #- vim
+    #- tmux
+    #- zsh
+    #- htop
+    #- mc
+    #- curl
