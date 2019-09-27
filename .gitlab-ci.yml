@@ -17,7 +17,10 @@ molecule:
   script:
     - pip3 install ansible molecule docker
     - ansible --version
-    - cd ansible/roles/
-    - find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "molecule test" \;
+    - cd ansible/
+    - for d in roles/*/
+    - do
+    -   (cd "$d" && molecule test)
+    - done
   only:
     - molecule
