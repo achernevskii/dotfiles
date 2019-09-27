@@ -9,11 +9,17 @@
   when: ansible_os_family == 'Archlinux'
 
 - name: "Set global git name: {{ user.name }}"
-  shell: "git config --global user.name \"{{ user.name }}\""
-  become: true
-  become_user: "{{user.login}}"
+  git_config:
+    # The name of the setting.
+    name: user.name
+    # The value of the setting.
+    value: "{{ user.name }}"
+    scope: global
 
 - name: "Set global git email: {{ user.email }}"
-  shell: "git config --global user.email \"{{ user.email }}\""
-  become: true
-  become_user: "{{user.login}}"
+  git_config:
+    # The name of the setting.
+    name: user.email
+    # The value of the setting.
+    value: "{{ user.email }}"
+    scope: global

@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  role_name: create_user
+  role_name: update
   author: Alex Chernevskiy
-  description: An Ansible Role that creates new user.
+  description: An Ansible Role that updates your unix system.
 
   license: MIT
   min_ansible_version: 2.1
@@ -16,6 +16,3 @@ galaxy_info:
     - name: archlinux
       versions:
         - all
-
-dependencies:
-  - openssh
