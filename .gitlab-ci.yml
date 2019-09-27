@@ -1,21 +1,16 @@
 ---
-image: docker:git
-
-services:
-  - docker:dind
+image: ubuntu:18.04
 
 before_script:
-  - apk update && apk add --no-cache docker
-    python3-dev py3-pip docker gcc git curl build-base
-    autoconf automake py3-cryptography linux-headers
-    musl-dev libffi-dev openssl-dev openssh
+  - apt update
+  - apt install -y python-pip libssl-dev libffi-dev git
   - docker info
   - python3 --version
 
 molecule:
   stage: test
   script:
-    - pip3 install ansible molecule docker
+    - pip install ansible molecule docker
     - ansible --version
     - cd ansible/
     - for d in roles/*/
