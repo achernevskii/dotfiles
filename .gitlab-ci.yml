@@ -3,9 +3,9 @@ image: ubuntu:18.04
 
 before_script:
   - apt update
-  - apt install -y python-pip libssl-dev libffi-dev git
+  - apt install -y python-pip libssl-dev docker
   - docker info
-  - python3 --version
+  - python --version
 
 molecule:
   stage: test
