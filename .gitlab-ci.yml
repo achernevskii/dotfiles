@@ -20,4 +20,4 @@ molecule:
     - cd GettingStarted/roles/
     - find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "molecule test" \;
   only:
-    molecule
+    - molecule
