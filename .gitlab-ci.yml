@@ -20,10 +20,6 @@ molecule:
     # Go to directory containing ansible roles.
     - cd ansible/roles
     # For each directory with an ansible role
-    - for dir in *
-    - do
-          # Go to this directory and test this role
-    -     (cd "$dir" && molecule test)
-    - done
+    - for dir in *; do (cd "$dir" && pwd); done
   only:
-    - molecule
+    -molecule
