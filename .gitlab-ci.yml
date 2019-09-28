@@ -22,4 +22,4 @@ molecule:
     # For each directory with an ansible role
     - for dir in *; do (cd "$dir" && pwd); done
   only:
-    -molecule
+    - molecule
