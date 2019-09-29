@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: mc
   author: Alex Chernevskiy
-  description: An Ansible Role that installs Midnight Commander on your unix system.
+  description: Ansible role which installs Midnight Commander.
 
   license: MIT
   min_ansible_version: 2.1
