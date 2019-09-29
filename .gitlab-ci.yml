@@ -17,7 +17,7 @@ before_script:
   - python3 --version
 
 molecule_lint:
-  stage: test
+  stage: lint
   script:
     - pip3 install ansible molecule docker
     - ansible --version
