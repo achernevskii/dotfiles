@@ -1,6 +1,10 @@
 ---
 image: docker:git
 
+stages:
+  - lint
+  - "Docker Test"
+
 services:
   - docker:dind
 
@@ -12,7 +16,7 @@ before_script:
   - docker info
   - python3 --version
 
-molecule:
+molecule_lint:
   stage: test
   script:
     - pip3 install ansible molecule docker
@@ -20,6 +24,21 @@ molecule:
     # Go to directory containing ansible roles.
     - cd ansible/roles
     # For each directory with an ansible role
-    - for dir in *; do (cd "$dir" && molecule test); done
+    - for dir in *; do (cd "$dir" && molecule lint); done
   only:
     - molecule
+
+centos_docker_test:
+  stage: "Docker Test"
+  script:
+    - docker info
+
+ubuntu_docker_test:
+  stage: "Docker Test"
+    script:
+      - docker info
+
+archlinux_docker_test:
+  stage: "Docker Test"
+    script:
+      - docker info

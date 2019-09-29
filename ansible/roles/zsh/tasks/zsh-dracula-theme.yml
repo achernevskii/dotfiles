@@ -3,6 +3,7 @@
   git:
     repo: "https://github.com/dracula/zsh.git"
     dest: "/tmp/"
+    version: "91741d3e44c2d7a9aa20a0c22b5e3e904ec4f8d2"
 
 - name: "Copy dracula.zsh-theme"
   copy:
@@ -16,12 +17,12 @@
     state: absent
 
 # Dracula theme
-#git clone https://github.com/dracula/zsh.git
+# git clone https://github.com/dracula/zsh.git
 # Copy dracula theme for oh-my-zsh
-#cp -fv zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
+# cp -fv zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
 
-#rm -fvr zsh
+# rm -fvr zsh
 ###########################
 ###########################
 
-#cp -fv config/.zshrc ~/
+# cp -fv config/.zshrc ~/
