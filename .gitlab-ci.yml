@@ -35,10 +35,10 @@ centos_docker_test:
 
 ubuntu_docker_test:
   stage: "Docker Test"
-    script:
-      - docker info
+  script:
+    - docker info
 
 archlinux_docker_test:
   stage: "Docker Test"
-    script:
-      - docker info
+  script:
+    - docker info
