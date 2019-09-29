@@ -30,7 +30,9 @@
     force: true
 
 - name: "Install all vim plugins"
-  shell: "vim -E -s -c \"source /home/{{ user.login }}/.vimrc\" +PlugInstall +qall -V"
+  command: >
+    vim -E -s -c \"source /home/{{ user.login }}/.vimrc\"
+    +PlugInstall +qall -V
   args:
     creates: "/home/{{ user.login }}/.vim/plugged"
   ignore_errors: true
@@ -38,6 +40,9 @@
   become_user: "{{ user.login }}"
 
 - name: "Set global git editor to: vim"
-  shell: "git config --global core.editor vim"
+  git_config:
+    name: core.editor
+    scope: global
+    value: vim
   become: true
-  become_user: "{{user.login}}"
+  become_user: "{{ user.login }}"
