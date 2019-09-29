@@ -4,3 +4,5 @@
     update_cache: true
     name: "*"
     state: latest
+  tags:
+    - skip_ansible_lint

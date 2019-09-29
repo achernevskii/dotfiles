@@ -28,17 +28,17 @@ molecule_lint:
   only:
     - molecule
 
-centos_docker_test:
+centos:
   stage: "Docker Test"
   script:
     - docker info
 
-ubuntu_docker_test:
+ubuntu:
   stage: "Docker Test"
   script:
     - docker info
 
-archlinux_docker_test:
+archlinux:
   stage: "Docker Test"
   script:
     - docker info
