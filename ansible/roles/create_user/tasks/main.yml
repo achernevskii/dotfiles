@@ -1,8 +1,27 @@
 ---
+- name: "Create user {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+  register: user_create
+
+- name: "Create home directory for {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+    create_home: true
+
+- name: "Generate ssh key for {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+    generate_ssh_key: true
+    # Add a comment to the end of ssh key
+    ssh_key_comment: "{{ user.email }}"
+  when: user_create.changed
+
 - name: "Create group 'wheel'"
   group:
     name: wheel
     state: present
+  when: user_create.changed
 
 - name: Allow members of group 'wheel' to execute any command
   lineinfile:
@@ -11,27 +30,27 @@
     regexp: '^%wheel'
     line: '%wheel ALL=(ALL) ALL'
     validate: 'visudo -cf %s'
+  when: user_create.changed
 
-- name: "Create user {{ user.login }}"
+- name: "Add {{ user.login  }} to the group wheel"
   user:
-    name: "{{ user.login }}"
-
-    create_home: true
-
-    generate_ssh_key: true
-    # Add a comment to the end of ssh key
-    ssh_key_comment: "{{ user.email }}"
-
-    password: ""
+    name: "[{ user.login  }]"
     # Add user to sudoers
     group: wheel
     append: true
-    # Add GECOS comment
-    comment: "{{ user.name }}"
+  when: user_create.changed
 
-    state: present
-  register: create_user
+- name: "Set blank password for {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+    password: ""
+  when: user_create.changed
 
 - name: "Force user {{ user.login }} to change password on first login"
   command: chage -d 0 {{ user.login }}
-  when: create_user.changed
+  when: user_create.changed
+
+- name: "Add {{ user.name }} as GECOS comment"
+  user:
+    name: "{{ user.login }}"
+    comment: "{{ user.name }}"
