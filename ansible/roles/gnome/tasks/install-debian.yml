@@ -1,0 +1,5 @@
+---
+- name: Install gnome
+  apt:
+    name: gnome
+    state: present
