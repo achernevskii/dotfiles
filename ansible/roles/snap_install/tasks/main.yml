@@ -1,0 +1,10 @@
+---
+- name: "Install strict snap packages {{ snap.packages.strict }} without any configuration"
+  snap:
+    name: "{{ snap.packages.strict }}"
+
+- name: "Install classic snap packages {{ snap.packages.classic }} without any configuration"
+  snap:
+    name: "{{ snap.packages.classic }}"
+    classic: true
+  when: snap.install_classic == true
