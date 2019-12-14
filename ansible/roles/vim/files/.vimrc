@@ -144,57 +144,26 @@ call plug#begin('~/.vim/plugged')
 " Nerd tree
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-" Class/module browser
-Plug 'majutsushi/tagbar' 
-
-" }}}
-
-" Snippets support {{{
-
-Plug 'garbas/vim-snipmate'		" Snippets manager
-Plug 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
-Plug 'tomtom/tlib_vim'		" dependencies #2
-Plug 'honza/vim-snippets'		" snippets repo
-
 " }}}
 
 " Langage support {{{
 
-" You Complete Me
-Plug 'Valloric/YouCompleteMe', { 'for': ['cpp', 'h', 'java'] }
-
 " Auto pairs
 Plug 'jiangmiao/auto-pairs'
 
-" Vimtex for latex files
-Plug 'lervag/vimtex', { 'for': 'tex'  }
+" }}}
 
-" Gundo
-Plug 'simnalamburt/vim-mundo'
-
-" Undo Tree
-Plug 'mbbill/undotree'
-
-" Syntastic - for errors highlight
-"Plug 'vim-syntastic/syntastic'
+" Appearence {{{
 
 " Vim-Airline (Lean & mean status/tabline for vim that's light as air)
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Simple tmux statusline generator with support for powerline symbols and vim/airline/lightline statusline integration
-"Plug 'edkolev/tmuxline.vim'
-
-" Vim syntax highlighting for i3 config
-Plug 'mboughaba/i3config.vim',  { 'for': '.i3.config'}
-
-" }}}
-
 " Color schemes {{{
 
 " Gruvbox
 " https://github.com/morhetz/gruvbox
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 
 " Badwolf
 " https://github.com/sjl/badwolf/
@@ -202,52 +171,16 @@ Plug 'mboughaba/i3config.vim',  { 'for': '.i3.config'}
 
 " Dracula
 " https://github.com/dracula/vim
-Plug 'dracula/vim'
+"Plug 'dracula/vim'
 
 " }}}
 
 " }}}
-
-" Testing Plugins {{{
-
-" Ctrlp -- for file search
-"Plug 'kien/ctrlp.vim'
-
-" Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
 
 " }}}
 
 " Initialize plugin system
 call plug#end()
-
-" Syntastic {{{
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" }}}
 
 " Airline {{{
 
@@ -267,7 +200,7 @@ let g:airline_right_sep = ''
 
 " Colors {{{
 try
-	colorscheme dracula
+	colorscheme gruvbox
 catch
 endtry
 
@@ -279,10 +212,6 @@ set background=dark
 
 " Nerd tree opening
 map <C-e> :NERDTreeToggle<CR>
-
-map <C-u> :UndotreeToggle<CR>
-
-"map <C-w> :w!<cr>
 
 " }}}
 
