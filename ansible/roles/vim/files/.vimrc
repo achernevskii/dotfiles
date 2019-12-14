@@ -27,6 +27,7 @@
 " Word wrap without line breaks
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 
+
 " }}}
 
 " UI Layout {{{
@@ -72,9 +73,16 @@ endif
 
 " }}}
 
-" Mac {{{
+" }}}
 
-set guifont=Consolas:h13
+" Language Support {{{
+
+" YAML {{{
+
+" This enables folding in yaml files
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+" This enables needed indent for the yaml files
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " }}}
 
@@ -238,3 +246,4 @@ set autoread
 set enc=utf-8 " utf-8 as default file encoding
 
 " }}}
+
