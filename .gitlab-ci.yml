@@ -2,8 +2,8 @@
 image: docker:git
 
 stages:
-  - lint
-  - "Docker Test"
+  - "lint"
+  - "test"
 
 services:
   - docker:dind
@@ -16,8 +16,8 @@ before_script:
   - docker info
   - python3 --version
 
-molecule_lint:
-  stage: lint
+molecule:
+  stage: "lint"
   script:
     - pip3 install ansible molecule docker
     - ansible --version
@@ -29,16 +29,16 @@ molecule_lint:
     - molecule
 
 centos:
-  stage: "Docker Test"
+  stage: "test"
   script:
     - docker info
 
 ubuntu:
-  stage: "Docker Test"
+  stage: "test"
   script:
     - docker info
 
 archlinux:
-  stage: "Docker Test"
+  stage: "test"
   script:
     - docker info
