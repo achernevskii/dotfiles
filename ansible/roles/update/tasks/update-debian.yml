@@ -1,5 +1,5 @@
 ---
-- name: Upgrade the system
+- name: Update the packages
   apt:
     update_cache: true
     upgrade: dist
