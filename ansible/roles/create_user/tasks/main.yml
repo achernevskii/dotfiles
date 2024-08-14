@@ -1,0 +1,25 @@
+---
+- name: "Create user {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+  register: user_create
+
+- name: "Create home directory for {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+    create_home: true
+
+- name: "Set blank password for {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+    password: ""
+  when: user_create.changed
+
+- name: "Force user {{ user.login }} to change password on first login"
+  command: chage -d 0 {{ user.login }}
+  when: user_create.changed
+
+- name: "Add {{ user.name }} as GECOS comment"
+  user:
+    name: "{{ user.login }}"
+    comment: "{{ user.name }}"

@@ -1,0 +1,5 @@
+---
+- name: Install curl
+  pacman:
+    name: curl
+    state: present

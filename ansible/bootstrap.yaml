@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  vars:
+    user:
+      login: "lexach"
+      email: "lexachsar@gmail.com"
+      name: "Alex Chernevskiy"
+    snap:
+      install_classic: false
+      packages:
+        classic:
+          - atom
+          - skype
+        strict:
+          - discord
+          - telegram-desktop
+
+  become: true
+  roles:
+    #- update
+    #- openssh
+    #- create_user
+    #- git
+    #- vim
+    #- tmux
+    #- zsh
+    #- htop
+    #- mc
+    #- curl
+    #- gnome
+    #- snap
+    #- snap_install

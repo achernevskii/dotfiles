@@ -1,0 +1,27 @@
+---
+- name: "Clone \"dracula\" zsh theme repository"
+  git:
+    repo: "https://github.com/dracula/zsh.git"
+    dest: "/tmp/"
+
+- name: "Copy dracula.zsh-theme"
+  copy:
+    src: "/tmp/zsh/dracula.zsh-theme"
+    dest: "/home/{{ user_login }}/.oh-my-zsh/themes/dracula.zsh-theme"
+    owner: "{{ user_login }}"
+
+- name: "Delete \"dracula\" repository folder"
+  file:
+    path: "/tmp/zsh/"
+    state: absent
+
+# Dracula theme
+#git clone https://github.com/dracula/zsh.git
+# Copy dracula theme for oh-my-zsh
+#cp -fv zsh/dracula.zsh-theme ~/.oh-my-zsh/themes/dracula.zsh-theme
+
+#rm -fvr zsh
+###########################
+###########################
+
+#cp -fv config/.zshrc ~/

@@ -1,0 +1,32 @@
+---
+- include_tasks: install-redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: install-debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include_tasks: install-arch.yml
+  when: ansible_os_family == 'Archlinux'
+
+- name: "Make zsh default shell for user {{ user.login }}"
+  user:
+    name: "{{ user.login }}"
+    shell: "/bin/zsh"
+
+- name: "Download oh my zsh installer"
+  get_url:
+    url: "https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
+    dest: "/tmp/install_oh_my_zsh.sh"
+    owner: "{{ user.login }}"
+    # Redownload the file on every try
+    force: true
+    # Make downloaded file executable
+    mode: u+x
+
+- name: "Install oh-my-zsh for {{ user.login }}"
+  shell: "/tmp/install_oh_my_zsh.sh --unattended"
+  args:
+    executable: "/bin/sh"
+    creates: "/home/{{ user.login }}/.oh-my-zsh/"
+  become: true
+  become_user: "{{ user.login }}"

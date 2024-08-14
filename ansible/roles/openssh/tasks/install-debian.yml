@@ -1,0 +1,10 @@
+---
+- name: Install openssh client
+  apt:
+    name: openssh-client
+    state: present
+
+- name: Install openssh server
+  apt:
+    name: openssh-server
+    state: present
