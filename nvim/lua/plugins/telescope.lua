@@ -1,12 +1,15 @@
 return {
 	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-	},
-	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.6",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		branch = "0.1.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			-- Native sorter to make the sorting faster
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+			},
+		},
 		config = function()
 			require("telescope").setup({
 				pickers = {
@@ -23,8 +26,10 @@ return {
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 			-- Git pickers
+			vim.keymap.set("n", "<leader>fz", builtin.git_status, {})
 			vim.keymap.set("n", "<leader>gfb", builtin.git_branches, {})
 			vim.keymap.set("n", "<leader>gfc", builtin.git_commits, {})
+			vim.keymap.set("n", "<leader>gs", builtin.git_stash, {})
 
 			-- To get fzf loaded and working with telescope, you need to call
 			-- load_extension, somewhere after setup function:
