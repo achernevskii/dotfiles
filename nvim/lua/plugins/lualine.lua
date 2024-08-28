@@ -8,7 +8,7 @@ return {
 				component_separators = { left = "|", right = "|" },
 				section_separators = { left = "", right = "" },
 				ignore_focus = {
-									"neo-tree",
+					"neo-tree",
 				},
 				always_divide_middle = true,
 				globalstatus = true,
