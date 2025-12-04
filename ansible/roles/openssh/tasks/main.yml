@@ -1,0 +1,49 @@
+---
+- include_tasks: install-redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: install-debian.yml
+  when: ansible_distribution == 'Debian'
+
+- include_tasks: install-ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
+
+- include_tasks: install-arch.yml
+  when: ansible_os_family == 'Archlinux'
+
+- name: "Start and enable 'sshd.service'"
+  service:
+    name: sshd
+    state: started
+    enabled: true
+
+#- name: "Generate ssh key for {{ user.login }}"
+#  user:
+#    name: "{{ user.login }}"
+#    generate_ssh_key: true
+#    # Add a comment to the end of ssh key
+#    ssh_key_comment: "{{ user.email }}"
+#  when: user_create.changed
+
+#- name: "Create group 'wheel'"
+#  group:
+#    name: wheel
+#    state: present
+#  when: user_create.changed
+
+#- name: Allow members of group 'wheel' to execute any command
+#  lineinfile:
+#    dest: /etc/sudoers
+#    state: present
+#    regexp: '^%wheel'
+#    line: '%wheel ALL=(ALL) ALL'
+#    validate: 'visudo -cf %s'
+#  when: user_create.changed
+
+#- name: "Add {{ user.login  }} to the group wheel"
+#  user:
+#    name: "[{ user.login  }]"
+#    # Add user to sudoers
+#    group: wheel
+#    append: true
+#  when: user_create.changed

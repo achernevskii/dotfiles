@@ -1,0 +1,26 @@
+---
+- include_tasks: install-redhat.yml
+  when: ansible_os_family == 'RedHat'
+  register: install_redhat
+
+- include_tasks: install-debian.yml
+  when: ansible_os_family == 'Debian'
+  register: install_debian
+
+- include_tasks: install-arch.yml
+  when: ansible_os_family == 'Archlinux'
+  register: install_arch
+
+- name: "Make snap add app icons, when it's called by zsh {{ ansible_user_shell }}"
+  lineinfile:
+    path: "/etc/zsh/zprofile"
+    line: emulate sh -c 'source /etc/profile'
+# Add this condition if privelege escalation will be performed for certain tasks
+#  when: ansible_user_shell == '/usr/bin/zsh'
+
+- name: "Reboot host after snapd installation"
+  reboot:
+    reboot_timeout: 3600
+  when: install_debian.changed or
+        install_redhat.changed or
+        install_arch.changed
