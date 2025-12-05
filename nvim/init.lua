@@ -15,3 +15,8 @@ require("vim-config")
 
 require("lazy").setup("plugins")
 
+require("sidebars")
+
+require("compare-clipboard")
+
+require("resize")

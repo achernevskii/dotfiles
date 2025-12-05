@@ -6,7 +6,8 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
 			-- Adapters
-			"nvim-neotest/neotest-python",
+			--"nvim-neotest/neotest-python",
+			--"nvim-neotest/neotest-go",
 			"fredrikaverpil/neotest-golang",
 		},
 		config = function()
@@ -14,14 +15,15 @@ return {
 
 			neotest.setup({
 				adapters = {
-					require("neotest-python"),
+					--require("neotest-python"),
 					require("neotest-golang"),
 				},
 				icons = {
 					passed = "+",
-					running = '◯',
-					failed = 'x',
+					running = "◯",
+					failed = "x",
 					unknown = "?",
+					skipped = "s",
 				},
 			})
 
@@ -29,6 +31,11 @@ return {
 			vim.keymap.set("n", "<leader>tc", function()
 				neotest.run.run()
 			end, {})
+			-- Debug the nearest test
+			vim.keymap.set("n", "<leader>dt", function()
+				neotest.run.run({ strategy = "dap" })
+			end, {})
+
 			-- Run all the tests in the current buffer
 			vim.keymap.set("n", "<leader>tf", function()
 				neotest.run.run(vim.fn.expand("%"))
@@ -44,6 +51,10 @@ return {
 			-- Output panel of all the tests
 			vim.keymap.set("n", "<leader>tr", function()
 				neotest.output_panel.toggle()
+			end, {})
+			-- Test summary 
+			vim.keymap.set("n", "<leader>ts", function()
+				neotest.summary.toggle()
 			end, {})
 		end,
 	},

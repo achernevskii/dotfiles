@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
+		--branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			-- Native sorter to make the sorting faster
@@ -12,6 +12,11 @@ return {
 		},
 		config = function()
 			require("telescope").setup({
+				defaults = {
+					file_ignore_patterns = {
+						"vendor/",
+					},
+				},
 				pickers = {
 					git_branches = {
 						theme = "dropdown",

@@ -29,7 +29,7 @@ return {
 
 			-- Function to set the provided theme
 			local function set_theme(theme)
-				-- Clear all existing highlights 
+				-- Clear all existing highlights
 				-- to ensure clean theme switch
 				vim.cmd("highlight clear")
 				vim.cmd("syntax reset")
@@ -56,7 +56,7 @@ return {
 			vim.keymap.set("n", "<leader>cs", select_colorscheme, { noremap = true, silent = true })
 
 			-- Set default theme on startup
-			set_theme("nordic")
+			set_theme("default")
 		end,
 	},
 }

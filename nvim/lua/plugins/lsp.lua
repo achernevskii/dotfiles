@@ -16,6 +16,12 @@ return {
 					"gopls",
 					-- Python
 					"pylsp",
+					-- LaTeX
+					"texlab",
+					-- HTML
+					"html",
+					-- Typescript and JS
+					"ts_ls"
 				}
 			})
 		end
@@ -23,21 +29,10 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({
-				capabilities = capabilities
-			})
-			lspconfig.gopls.setup({
-				capabilities = capabilities
-			})
-			lspconfig.pylsp.setup({
-				capabilities = capabilities
-			})
+			-- Keymaps
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
 			vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
 			vim.keymap.set('n', 'gu', vim.lsp.buf.references, {})
 		end
