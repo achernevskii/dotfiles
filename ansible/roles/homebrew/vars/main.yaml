@@ -1,0 +1,4 @@
+---
+# Set architecture-aware paths for Intel and Apple Silicon Macs.
+homebrew_prefix: "{{ '/opt/homebrew' if ansible_facts.machine == 'arm64' else '/usr/local' }}"
+homebrew_install_path: "{{ homebrew_prefix }}/bin/brew"
