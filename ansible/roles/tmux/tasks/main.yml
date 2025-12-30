@@ -8,6 +8,9 @@
 - include_tasks: install-arch.yml
   when: ansible_os_family == 'Archlinux'
 
+- include_tasks: install-darwin.yml
+  when: ansible_os_family == 'Darwin'
+
 - name: "Copy '.tmux.conf' file into '/home/{{ user.login }}/'"
   copy:
     owner: "{{ user.login }}"

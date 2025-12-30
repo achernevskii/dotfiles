@@ -1,0 +1,32 @@
+---
+- include_tasks: install-darwin.yaml
+  when: ansible_os_family == 'Darwin'
+
+- name: Check if Neovim config already exists
+  stat:
+    path: "~/.config/nvim"
+  become: false
+  register: nvim_config
+
+- name: Warn if Neovim config already exists
+  debug:
+    msg: "Neovim config at ~/.config/nvim already exists. Skipping deployment. Manual backup recommended."
+  become: false
+  when: nvim_config.stat.exists
+
+- name: Create Neovim config directory
+  file:
+    owner: "{{ user.login }}"
+    path: "~/.config/nvim"
+    state: directory
+  become: false
+  when: not nvim_config.stat.exists
+
+- name: Deploy Neovim configuration from files
+  copy:
+    src: .
+    dest: "~/.config/nvim/"
+    backup: yes
+  become: false
+  when: not nvim_config.stat.exists
+

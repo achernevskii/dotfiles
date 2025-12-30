@@ -1,0 +1,17 @@
+---
+- name: Check if Homebrew is already installed
+  stat:
+    path: "{{ homebrew_install_path }}"
+  register: homebrew
+
+- name: Install Xcode Command Line Tools
+  shell: |
+    xcode-select --install || true
+  become: false
+  when: not homebrew.stat.exists
+
+- name: Install Homebrew
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  become: false
+  when: not homebrew.stat.exists
+

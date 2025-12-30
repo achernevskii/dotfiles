@@ -1,0 +1,6 @@
+---
+- name: Install Neovim via Homebrew
+  community.general.homebrew:
+    name: tmux
+    state: present
+  become: false

@@ -1,0 +1,9 @@
+---
+- include_tasks: install-darwin.yaml
+  when: ansible_os_family == 'Darwin'
+
+- name: Run Homebrew update
+  shell: brew update
+  ignore_errors: true
+  become: false
+
