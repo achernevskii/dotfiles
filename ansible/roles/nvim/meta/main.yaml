@@ -1,0 +1,6 @@
+---
+dependencies:
+  # Needed for the Golang Mason LSP.
+  - golang
+  # Needed for the Typscript Mason LSP.
+  - nodejs

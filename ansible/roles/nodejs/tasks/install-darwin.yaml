@@ -1,0 +1,6 @@
+---
+- name: Install node.js via Homebrew
+  community.general.homebrew:
+    name: node
+    state: present
+  become: false
