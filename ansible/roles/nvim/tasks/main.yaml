@@ -16,7 +16,6 @@
 
 - name: Create Neovim config directory
   file:
-    owner: "{{ user.login }}"
     path: "~/.config/nvim"
     state: directory
   become: false

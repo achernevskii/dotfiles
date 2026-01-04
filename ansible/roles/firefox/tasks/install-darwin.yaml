@@ -1,0 +1,6 @@
+---
+- name: Install Firefox via Homebrew
+  community.general.homebrew:
+    name: firefox
+    state: present
+  become: false
