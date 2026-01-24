@@ -1,0 +1,19 @@
+[Unit]
+Requires=immich-redis.service immich-database.service
+After=immich-redis.service immich-database.service
+
+[Container]
+Image=ghcr.io/immich-app/immich-server:release
+Pod=immich.pod
+Volume=/home/lexach/Projects/immich-app/library:/data:z
+Volume=/mnt/data/lexach/Photos:/home/lexach/SonyPhotos:Z,ro
+Volume=/etc/localtime:/etc/localtime:ro
+
+Environment=REDIS_HOSTNAME=127.0.0.1
+Environment=DB_HOSTNAME=127.0.0.1
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

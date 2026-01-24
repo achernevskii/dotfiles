@@ -1,0 +1,5 @@
+---
+dependencies:
+  # Install current nvim config on the homelab server.
+  #- nvim
+  - podman
