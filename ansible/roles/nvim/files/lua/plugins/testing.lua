@@ -4,11 +4,23 @@ return {
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
+			{
+				"nvim-treesitter/nvim-treesitter",
+				branch = "main", -- main is required by neotest-golang
+				build = function()
+					vim.cmd(":TSUpdate go")
+				end,
+			},
 			-- Adapters
 			--"nvim-neotest/neotest-python",
 			--"nvim-neotest/neotest-go",
-			"fredrikaverpil/neotest-golang",
+			{
+				"fredrikaverpil/neotest-golang",
+				version = "*",                               -- Optional, but recommended; track releases
+				build = function()
+					vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
+				end,
+			},
 		},
 		config = function()
 			local neotest = require("neotest")
@@ -16,7 +28,10 @@ return {
 			neotest.setup({
 				adapters = {
 					--require("neotest-python"),
-					require("neotest-golang"),
+					require("neotest-golang")({
+						runner = "gotestsum", -- Optional, but recommended
+						warn_test_name_dupes = false,
+					}),
 				},
 				icons = {
 					passed = "+",
@@ -52,7 +67,7 @@ return {
 			vim.keymap.set("n", "<leader>tr", function()
 				neotest.output_panel.toggle()
 			end, {})
-			-- Test summary 
+			-- Test summary
 			vim.keymap.set("n", "<leader>ts", function()
 				neotest.summary.toggle()
 			end, {})
