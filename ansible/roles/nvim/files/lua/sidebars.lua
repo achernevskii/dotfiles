@@ -9,13 +9,18 @@ local function close_sidebars()
 	if columns < columns_threshold or lines < lines_threshold then
 		-- Close neo-tree if it's open
 		if vim.fn.exists(":Neotree") == 2 then
-			vim.cmd("Neotree clode")
+			vim.cmd("Neotree close")
 		end
 
 		-- Close dap-ui if it's open
 		local dapui_ok, dapui = pcall(require, "dapui")
 		if dapui_ok then
 			dapui.close()
+		end
+
+		-- Close quickfix if it's open
+		if vim.fn.getqflist({ winid = 0 }).winid ~= 0 then
+			vim.cmd("cclose")
 		end
 	end
 end

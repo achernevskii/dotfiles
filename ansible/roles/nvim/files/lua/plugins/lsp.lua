@@ -21,7 +21,9 @@ return {
 					-- HTML
 					"html",
 					-- Typescript and JS
-					"ts_ls"
+					"ts_ls",
+					-- Bash/sh/ZSH
+					"bashls"
 				}
 			})
 		end

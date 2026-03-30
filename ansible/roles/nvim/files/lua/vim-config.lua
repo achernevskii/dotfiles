@@ -95,17 +95,17 @@ vim.keymap.set('n', '[q', ':cprev<CR>', { desc = 'Go to previous [Q]uickfix entr
 vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Go to next [Q]uickfix entry' })
 
 vim.keymap.set("n", "<leader>qq", function()
-  local wininfo = vim.fn.getwininfo()
-  local quickfix_open = false
-  for _, win in pairs(wininfo) do
-    if win.quickfix == 1 then
-      quickfix_open = true
-      break
-    end
-  end
-  if quickfix_open then
-    vim.cmd("cclose")
-  else
-    vim.cmd("copen")
-  end
+	local wininfo = vim.fn.getwininfo()
+	local quickfix_open = false
+	for _, win in pairs(wininfo) do
+		if win.quickfix == 1 then
+			quickfix_open = true
+			break
+		end
+	end
+	if quickfix_open then
+		vim.cmd("cclose")
+	else
+		vim.cmd("copen")
+	end
 end, { desc = "Toggle quickfix" })
