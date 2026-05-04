@@ -1,0 +1,6 @@
+---
+- name: Install OpenCode via Homebrew
+  community.general.homebrew:
+    name: opencode
+    state: present
+  become: false
