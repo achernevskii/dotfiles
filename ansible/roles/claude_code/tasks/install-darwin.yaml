@@ -1,0 +1,6 @@
+---
+- name: Install Claude Code via Homebrew
+  community.general.homebrew:
+    name: claude-code
+    state: present
+  become: false

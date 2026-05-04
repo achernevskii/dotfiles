@@ -1,0 +1,13 @@
+---
+- name: Ensure agent skills destination exists
+  ansible.builtin.file:
+    path: "{{ agent_skills_dest }}"
+    state: directory
+  become: false
+
+- name: Copy shared agent skills
+  ansible.builtin.copy:
+    src: "skills/"
+    dest: "{{ agent_skills_dest }}/"
+    backup: true
+  become: false
