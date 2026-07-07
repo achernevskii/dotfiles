@@ -1,0 +1,12 @@
+[Container]
+Environment=POSTGRES_PASSWORD=immich-test-changeme9090 POSTGRES_USER=postgres POSTGRES_DB=immich POSTGRES_INITDB_ARGS=--data-checksums
+Image=ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+Pod=immich.pod
+ShmSize=128mb
+Volume=/home/lexach/Projects/immich-app/postgres:/var/lib/postgresql/data:z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
