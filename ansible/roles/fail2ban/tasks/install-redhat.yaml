@@ -1,0 +1,10 @@
+---
+# fail2ban-firewalld makes fail2ban apply bans through firewalld (the native
+# backend on Fedora) instead of raw iptables.
+- name: Install fail2ban
+  ansible.builtin.dnf:
+    name:
+      - fail2ban
+      - fail2ban-firewalld
+    state: present
+  become: true
