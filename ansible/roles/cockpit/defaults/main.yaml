@@ -1,0 +1,4 @@
+---
+# Host port Cockpit's socket listens on. Bound to loopback only, so it is
+# reached over an SSH tunnel rather than from the LAN.
+cockpit_port: 9090

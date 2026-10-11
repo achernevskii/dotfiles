@@ -1,0 +1,9 @@
+---
+- name: Install Cockpit and its Podman and SELinux modules
+  ansible.builtin.dnf:
+    name:
+      - cockpit
+      - cockpit-podman
+      - cockpit-selinux
+    state: present
+  become: true
