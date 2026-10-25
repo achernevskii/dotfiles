@@ -1,0 +1,35 @@
+---
+# The timer runs in the user's systemd instance, so it only updates that
+# user's rootless containers. Lingering must be on for it to fire while the
+# user is logged out.
+
+- name: "Ensure the podman-auto-update timer drop-in directory exists"
+  ansible.builtin.file:
+    path: "{{ podman_auto_update_dropin_dir }}"
+    state: directory
+    mode: "0755"
+  become: false
+
+- name: "Deploy the podman-auto-update timer schedule"
+  ansible.builtin.template:
+    src: schedule.conf.j2
+    dest: "{{ podman_auto_update_dropin_dir }}/schedule.conf"
+    mode: "0644"
+  become: false
+  notify:
+    - Reload user systemd
+    - Restart podman-auto-update timer
+
+# Pick up a changed schedule before enabling, so the first run is computed
+# from it.
+- name: "Apply pending timer changes"
+  ansible.builtin.meta: flush_handlers
+
+- name: "Enable and start the podman-auto-update timer"
+  ansible.builtin.systemd:
+    scope: user
+    name: podman-auto-update.timer
+    enabled: true
+    state: started
+    daemon_reload: true
+  become: false

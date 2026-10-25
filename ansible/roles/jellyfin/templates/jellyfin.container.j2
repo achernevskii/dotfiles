@@ -1,0 +1,49 @@
+# jellyfin.container
+# Managed by Ansible (jellyfin role). Rootless Quadlet container.
+[Unit]
+Description=Jellyfin media server
+
+[Container]
+Image={{ jellyfin_image }}
+ContainerName={{ jellyfin_container_name }}
+
+# Let podman-auto-update pull newer images straight from the registry.
+AutoUpdate=registry
+
+DropCapability=ALL
+NoNewPrivileges=true
+
+# keep-id maps the host user to the same UID inside the container, so files
+# written to the volumes and media stay owned by that user.
+User={{ jellyfin_uid }}
+Group={{ jellyfin_gid }}
+UserNS=keep-id
+
+{% if jellyfin_render_devices | default([]) %}
+# Render nodes for hardware transcoding.
+{% for device in jellyfin_render_devices %}
+AddDevice={{ device }}
+{% endfor %}
+{% endif %}
+
+{% if jellyfin_publish_address %}
+PublishPort={{ jellyfin_publish_address }}:{{ jellyfin_port }}:{{ jellyfin_port }}/tcp
+{% else %}
+PublishPort={{ jellyfin_port }}:{{ jellyfin_port }}/tcp
+{% endif %}
+
+# Named volumes holding Jellyfin's state.
+Volume={{ jellyfin_cache_volume }}:/cache:Z
+Volume={{ jellyfin_config_volume }}:/config:Z
+
+# Read-only media libraries, shared-relabelled so other containers can also
+# mount them.
+{% for mount in jellyfin_media_mounts %}
+Mount=type=bind,source={{ mount.source }},destination={{ mount.destination }},ro=true,relabel=shared
+{% endfor %}
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

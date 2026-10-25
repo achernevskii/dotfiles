@@ -1,0 +1,39 @@
+---
+- hosts: beelink
+  connection: ssh
+  remote_user: lexach
+  become: true
+  vars:
+    # The non-root account that owns dotfiles and rootless services. Everything
+    # else about it is looked up on the target by the user_facts role.
+    user_login: "lexach"
+    # Not derivable: the GECOS field on the hosts is just the login.
+    user_fullname: "Alex Chernevskiy"
+    # Fedora's system Python; the symlink follows Fedora upgrades.
+    ansible_python_interpreter: /usr/bin/python3
+    # Run sudo without a terminal, so pam_systemd doesn't append its OSC 3008
+    # escape sequence to the module output.
+    ansible_ssh_use_tty: false
+    # Pull newer images daily for the systemd containers labelled with 
+    # AutoUpdate=.
+    podman_auto_update: true
+    # The Alder Lake-N iGPU, used by Jellyfin for VA-API transcoding.
+    jellyfin_render_devices:
+      - "/dev/dri/renderD128"
+    # The in-container destinations are what Jellyfin's libraries point at.
+    jellyfin_media_mounts:
+      - source: "/home/lexach/Music"
+        destination: "/media/Music"
+      - source: "/mnt/data/media/Movies"
+        destination: "/media/Movies"
+      - source: "/mnt/data/media/servarr/media/movies"
+        destination: "/media/RadarrMovies"
+      - source: "/mnt/data/media/Shows"
+        destination: "/media/Shows"
+      - source: "/mnt/data/media/servarr/media/shows"
+        destination: "/media/SonarrShows"
+  roles:
+    - cockpit
+    - podman
+    - fail2ban
+    - jellyfin

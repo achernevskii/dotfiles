@@ -1,0 +1,14 @@
+---
+- name: Include RedHat installation tasks
+  include_tasks: install-redhat.yaml
+  when: ansible_facts.os_family == 'RedHat'
+
+- name: Include the auto-update timer tasks
+  include_tasks: auto-update.yaml
+  when:
+    - ansible_facts.os_family == 'RedHat'
+    - podman_auto_update | bool
+
+- name: Include Darwin installation tasks
+  include_tasks: install-darwin.yaml
+  when: ansible_facts.os_family == 'Darwin'

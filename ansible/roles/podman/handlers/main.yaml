@@ -1,0 +1,15 @@
+---
+# Handlers run in the order defined, so reload the user manager (which reads
+# the new drop-in) before restarting the timer to reschedule it.
+- name: Reload user systemd
+  ansible.builtin.systemd:
+    scope: user
+    daemon_reload: true
+  become: false
+
+- name: Restart podman-auto-update timer
+  ansible.builtin.systemd:
+    scope: user
+    name: podman-auto-update.timer
+    state: restarted
+  become: false

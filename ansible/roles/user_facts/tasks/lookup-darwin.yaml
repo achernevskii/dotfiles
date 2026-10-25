@@ -1,0 +1,37 @@
+---
+# Only reads, so it also runs in check mode.
+- name: "Read {{ user_login }} from Directory Services"
+  ansible.builtin.command:
+    argv:
+      - dscl
+      - .
+      - -read
+      - "/Users/{{ user_login }}"
+      - UniqueID
+      - PrimaryGroupID
+      - NFSHomeDirectory
+      - UserShell
+  register: user_facts_dscl
+  changed_when: false
+  check_mode: false
+  become: false
+
+- name: "Look up the primary group of {{ user_login }}"
+  ansible.builtin.command:
+    argv: [id, -gn, "{{ user_login }}"]
+  register: user_facts_group
+  changed_when: false
+  check_mode: false
+  become: false
+
+# Each dscl line reads "Attribute: value".
+- name: "Store the account details of {{ user_login }}"
+  vars:
+    dscl_attrs: "{{ dict(user_facts_dscl.stdout_lines | map('split', ': ', 1)) }}"
+  ansible.builtin.set_fact:
+    user_facts_lookup:
+      uid: "{{ dscl_attrs.UniqueID | int }}"
+      gid: "{{ dscl_attrs.PrimaryGroupID | int }}"
+      group: "{{ user_facts_group.stdout }}"
+      home: "{{ dscl_attrs.NFSHomeDirectory }}"
+      shell: "{{ dscl_attrs.UserShell }}"
