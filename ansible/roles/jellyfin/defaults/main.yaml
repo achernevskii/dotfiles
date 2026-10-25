@@ -1,0 +1,23 @@
+---
+jellyfin_image: "docker.io/jellyfin/jellyfin:latest"
+
+jellyfin_container_name: "jellyfin"
+# Empty means no address prefix, i.e. published on every interface.
+jellyfin_publish_address: ""
+jellyfin_port: 8096
+
+# Render nodes passed through for hardware transcoding. Empty means no
+# device is passed through.
+jellyfin_render_devices: []
+
+# The host user that owns the rootless container, collected by user_facts.
+jellyfin_user: "{{ user.login }}"
+jellyfin_uid: "{{ user.uid }}"
+jellyfin_gid: "{{ user.gid }}"
+
+# Where to put the resulting jellyfin quadlet on the target host.
+jellyfin_quadlet_dir: "{{ user.home }}/.config/containers/systemd"
+
+# Jellyfin's cache and config are stored in these named Podman volumes.
+jellyfin_cache_volume: "jellyfin-cache"
+jellyfin_config_volume: "jellyfin-config"

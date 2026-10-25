@@ -1,18 +1,28 @@
 ---
 - hosts: localhost
   connection: local
-  become: true
+  vars:
+    # The non-root account that owns dotfiles and rootless services. Everything
+    # else about it is looked up on the target by the user_facts role.
+    user_login: "lexach"
+    # Not derivable: the GECOS field on the hosts is just the login.
+    user_fullname: "Alex Chernevskiy"
   roles:
     - homebrew
+    - golang
+    - nodejs
+    - claude_code
+    - opencode
     - nvim
-    - firefox
+    #- firefox
+    - podman
     #- update
     #- openssh
     #- create_user
     #- git
     #- vim
-    #- tmux
-    #- zsh
+    - tmux
+    - zsh
     #- htop
     #- mc
     #- curl

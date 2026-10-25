@@ -1,0 +1,45 @@
+---
+- name: "Fail on unsupported OS families"
+  ansible.builtin.fail:
+    msg: "The cockpit role supports only the RedHat OS family, not {{ ansible_facts['os_family'] }}."
+  when: ansible_facts['os_family'] != 'RedHat'
+
+- name: Include RedHat installation tasks
+  ansible.builtin.include_tasks: install-redhat.yaml
+  when: ansible_facts['os_family'] == 'RedHat'
+
+- name: "Ensure the cockpit.socket drop-in directory exists"
+  ansible.builtin.file:
+    path: /etc/systemd/system/cockpit.socket.d
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  become: true
+
+- name: "Bind Cockpit to localhost only (reach it over an SSH tunnel)"
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/cockpit.socket.d/listen.conf
+    owner: root
+    group: root
+    mode: "0644"
+    content: |
+      # Managed by Ansible (cockpit role).
+      # Cockpit listens on loopback only; access it with:
+      #   ssh -L {{ cockpit_port }}:localhost:{{ cockpit_port }} <user>@<server>
+      # then browse http://localhost:{{ cockpit_port }}
+      # The empty ListenStream= clears the all-interfaces address inherited from
+      # the vendor unit; without it the loopback address is merely appended.
+      [Socket]
+      ListenStream=
+      ListenStream=127.0.0.1:{{ cockpit_port }}
+  become: true
+  notify: Restart cockpit socket
+
+- name: "Enable and start cockpit.socket"
+  ansible.builtin.systemd:
+    name: cockpit.socket
+    enabled: true
+    state: started
+    daemon_reload: true
+  become: true

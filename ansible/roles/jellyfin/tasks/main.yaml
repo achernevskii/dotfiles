@@ -1,0 +1,68 @@
+---
+# The media locations are host-specific, so the role has no default for them.
+- name: "Assert the media mounts are provided"
+  ansible.builtin.assert:
+    that:
+      - jellyfin_media_mounts is defined
+      - jellyfin_media_mounts | length > 0
+    fail_msg: >-
+      Set jellyfin_media_mounts to a list of {source, destination} entries in
+      the playbook or inventory vars.
+  become: false
+
+# A missing media source, e.g. on a disk that isn't mounted, would show up as
+# an empty library, so stop the play instead of starting Jellyfin.
+- name: "Check the media source directories exist"
+  ansible.builtin.stat:
+    path: "{{ item.source }}"
+  loop: "{{ jellyfin_media_mounts }}"
+  loop_control:
+    label: "{{ item.source }}"
+  register: jellyfin_media_stat
+  become: false
+
+- name: "Assert every media source directory is present"
+  ansible.builtin.assert:
+    that: item.stat.isdir | default(false)
+    fail_msg: >-
+      {{ item.item.source }} is missing or not a directory. Is the disk that
+      holds it mounted? Refusing to start Jellyfin against an empty media mount.
+  loop: "{{ jellyfin_media_stat.results }}"
+  loop_control:
+    label: "{{ item.item.source }}"
+  become: false
+
+- name: "Ensure the Quadlet directory exists"
+  ansible.builtin.file:
+    path: "{{ jellyfin_quadlet_dir }}"
+    state: directory
+    mode: "0755"
+  become: false
+
+- name: "Deploy the Jellyfin Quadlet unit"
+  ansible.builtin.template:
+    src: jellyfin.container.j2
+    dest: "{{ jellyfin_quadlet_dir }}/jellyfin.container"
+    mode: "0644"
+  become: false
+  notify:
+    - Reload user systemd
+    - Restart jellyfin
+
+- name: "Enable lingering so Jellyfin survives logout and starts on boot"
+  ansible.builtin.command: "loginctl enable-linger {{ jellyfin_user }}"
+  args:
+    creates: "/var/lib/systemd/linger/{{ jellyfin_user }}"
+  become: true
+
+# Regenerate the Quadlet-derived unit before asserting the container is up.
+- name: "Apply pending Quadlet changes"
+  ansible.builtin.meta: flush_handlers
+
+- name: "Start Jellyfin"
+  ansible.builtin.systemd:
+    scope: user
+    name: jellyfin.service
+    state: started
+    daemon_reload: true
+  become: false

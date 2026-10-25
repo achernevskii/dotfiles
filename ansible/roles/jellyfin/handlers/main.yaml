@@ -1,0 +1,15 @@
+---
+# Handlers run in the order defined, so reload the user manager (which
+# regenerates the Quadlet-derived unit) before restarting the container.
+- name: Reload user systemd
+  ansible.builtin.systemd:
+    scope: user
+    daemon_reload: true
+  become: false
+
+- name: Restart jellyfin
+  ansible.builtin.systemd:
+    scope: user
+    name: jellyfin.service
+    state: restarted
+  become: false

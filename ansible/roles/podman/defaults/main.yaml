@@ -1,0 +1,11 @@
+---
+# Enable the podman-auto-update timer for the user. Off by default; hosts that
+# should pull newer images on their own turn it on in the playbook vars.
+podman_auto_update: false
+
+# When podman-auto-update checks the registries for newer images of the
+# containers labelled with AutoUpdate=. Uses the systemd OnCalendar syntax.
+podman_auto_update_schedule: "*-*-* 03:00:00"
+
+# Where the drop-in that overrides the stock timer schedule goes.
+podman_auto_update_dropin_dir: "{{ user.home }}/.config/systemd/user/podman-auto-update.timer.d"
